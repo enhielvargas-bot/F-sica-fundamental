@@ -2,3 +2,26 @@
 @media(max-width:1000px){.hero{gap:25px;padding:30px}.learning-layout{grid-template-columns:220px minmax(0,1fr)}.university{padding:14px;gap:12px}.university img{width:70px;height:90px}.university strong{font-size:19px}footer{margin:0 28px}}
 @media(max-width:760px){.topbar{padding:14px 18px;gap:16px}.brand small{display:none}.brand b{display:none}.brand{font-size:20px}.search-button{min-width:auto;padding:10px 12px}.search-button span{display:none}#explore{padding:10px 12px}.hero{grid-template-columns:1fr;padding:27px}.hero h1{font-size:39px}.hero-visual{display:grid;grid-template-columns:1fr;gap:15px}.hero figure{margin:0}.module-grid{grid-template-columns:1fr}.grid,.calc-layout{grid-template-columns:1fr}.learning-layout{grid-template-columns:1fr}.syllabus{display:grid;grid-template-columns:1fr 1fr;gap:15px}.syllabus h3{margin-top:0}.tabs button{padding:12px;font-size:15px}.tabs small{font-size:11px}.card{padding:22px}main{padding:25px 18px 45px}.tabs{gap:6px}.brand{white-space:nowrap}footer{margin:0 18px;flex-direction:column}.university img{width:80px}.university{justify-content:center}.intro{font-size:15px}#menu{width:min(300px,calc(100vw - 36px))}}
 @media(max-width:400px){.topbar{gap:10px}.brand{font-size:17px}#explore span{display:none}.fields{grid-template-columns:1fr}.search-button{font-size:14px}.hero h1{font-size:34px}.search-row{flex-direction:column}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Transiciones de entrada: se reinician al mostrar una sección oculta. */
+@keyframes section-enter{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes module-enter{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes menu-enter{
+  from{opacity:0;transform:translateY(-5px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media(prefers-reduced-motion:no-preference){
+  .page:not([hidden]){animation:section-enter 320ms cubic-bezier(.2,.7,.3,1)}
+  [role="tabpanel"]:not([hidden]){animation:module-enter 260ms cubic-bezier(.2,.7,.3,1)}
+  #menu:not([hidden]){animation:menu-enter 180ms ease-out}
+  #search-dialog[open]{animation:section-enter 220ms ease-out}
+}
+@media(prefers-reduced-motion:reduce){
+  .page,[role="tabpanel"],#menu,#search-dialog{animation:none!important}
+}
